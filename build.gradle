@@ -1,0 +1,38 @@
+allprojects {
+    version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    ext {
+        guava_version = '27.1-jre'
+        assertj_version = '3.12.2'
+        junit_version = '5.4.0'
+    }
+
+    dependencies {
+        implementation "com.google.guava:guava:$guava_version"
+
+        testImplementation "org.assertj:assertj-core:$assertj_version"
+        testImplementation "org.junit.jupiter:junit-jupiter:$junit_version"
+        testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
+}

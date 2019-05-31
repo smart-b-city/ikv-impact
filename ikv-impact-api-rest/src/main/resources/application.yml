@@ -1,0 +1,38 @@
+ssm:
+    name: docstampr-loop
+    coop:
+        url: http://localhost:9090
+    signer:
+        admin:
+            name: adam
+            key: file:./infra/dev/user/adam
+        user:
+            name: bob
+            key: file:./infra/dev/user/bob
+
+spring:
+    security:
+        oauth2:
+            client:
+                registration:
+                    google:
+                        client-id: 930147231612-ior5u4vea5vru12vl2ll6dsa5pqql3tr.apps.googleusercontent.com
+                        client-secret: z4K6VAIBGcu_lGzUDelxXo90
+                        scope: https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/fitness.activity.read,https://www.googleapis.com/auth/fitness.location.read
+                    strava:
+                        client-name: strava
+                        client-id: 35705
+                        client-secret: fe467f754fbe3da20a2f742f5f2cf720d984fe97
+                        scope: activity:read_all
+                        authorization-grant-type: authorization_code
+                        redirect-uri: http://localhost:8080/login/oauth2/code/strava
+                        token-uri: https://www.strava.com/oauth/token
+                        authorization-uri: https://www.strava.com/oauth/authorize
+                        user-info-uri: http://localhost:8084/user
+                        user-name-attribute: name
+                provider:
+                    strava:
+                        token-uri: https://www.strava.com/oauth/token?client_id=35705&client_secret=fe467f754fbe3da20a2f742f5f2cf720d984fe97
+                        authorization-uri: https://www.strava.com/oauth/authorize
+                        user-info-uri: https://www.strava.com/api/v3/athlete
+                        user-name-attribute: id
