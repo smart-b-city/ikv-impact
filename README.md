@@ -1,4 +1,4 @@
-
+````
 ## Execute integration test
 
  * Start test network based on bclan and with ssm and ex02 chaincode installed
